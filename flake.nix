@@ -2,7 +2,7 @@
   description = "NIXOS Server";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.05";
   };
 
   outputs = { self, nixpkgs }: {
