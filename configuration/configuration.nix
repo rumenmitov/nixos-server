@@ -12,6 +12,8 @@
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+	nixpkgs.config.allowUnfree = true;
+
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.grub.device = "nodev";
@@ -28,6 +30,7 @@
 			curl
 			git
 			wget
+			certbot
 	];
 
 
@@ -39,8 +42,13 @@
 	services = {
 		openssh.enable = true;
 		logind.lidSwitch = "ignore";
+
+		zerotierone = {
+			enable = true;
+			joinNetworks = [ "56374AC9A44F65A1" ];
+		};
 	};
 
-	system.stateVersion = "23.11"; 
+	system.stateVersion = "24.05"; 
 }
 
