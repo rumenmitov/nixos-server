@@ -7,7 +7,6 @@
 			./users.nix
 			./networking.nix
 			./nextcloud.nix
-			./systemd-timers.nix
 		];
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
