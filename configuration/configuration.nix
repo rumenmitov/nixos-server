@@ -22,7 +22,14 @@
 	sound.enable = true;
 	hardware.pulseaudio.enable = true;
 
-	programs.zsh.enable = true;
+    programs.zsh = {
+        enable = true;
+        autosuggestions = {
+            enable = true;
+            strategy = [ "completion" "history" ];
+        };
+    };
+
 
 	environment.systemPackages = with pkgs; [
 			neovim 
