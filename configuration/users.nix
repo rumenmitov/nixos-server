@@ -4,7 +4,7 @@
   users.users.rumen = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; 
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
     packages = with pkgs; [
       lsd
       bat
@@ -12,10 +12,8 @@
       tldr
       tree
       tmux
-
-      nodejs
-      rustup
-      go
+      stow
+      zoxide
     ];
   };
 

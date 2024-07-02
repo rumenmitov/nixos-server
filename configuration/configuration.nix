@@ -22,6 +22,8 @@
 	sound.enable = true;
 	hardware.pulseaudio.enable = true;
 
+	programs.zsh.enable = true;
+
 	environment.systemPackages = with pkgs; [
 			neovim 
 			man-pages
@@ -29,7 +31,10 @@
 			curl
 			git
 			wget
-			certbot
+
+			# Programming
+			go
+			rustup
 	];
 
 
