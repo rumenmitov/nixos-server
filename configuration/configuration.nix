@@ -11,40 +11,36 @@
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-	nixpkgs.config.allowUnfree = true;
-
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.grub.device = "nodev";
 
+
 	time.timeZone = "Europe/Luxembourg";
 
-	sound.enable = true;
-	hardware.pulseaudio.enable = true;
-
-    programs.zsh = {
-        enable = true;
-        autosuggestions = {
-            enable = true;
-            strategy = [ "completion" "history" ];
-        };
-    };
+	programs.zsh = {
+		enable = true;
+		autosuggestions = {
+			enable = true;
+			strategy = [ "completion" "history" ];
+		};
+	};
 
 
 	environment.systemPackages = with pkgs; [
-			neovim 
 			man-pages
 			man-db
 			curl
 			git
 			wget
-            wireguard-tools
+			wireguard-tools
+			neovim
 
 			# Programming
 			go
 			rustup
+      cargo
 	];
-
 
 	programs.gnupg.agent = {
 		enable = true;
@@ -54,8 +50,8 @@
 	services = {
 		openssh.enable = true;
 		logind.lidSwitch = "ignore";
-    };
+	};
 
-	system.stateVersion = "24.05"; 
+	system.stateVersion = "25.05"; 
 }
 

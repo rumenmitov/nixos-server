@@ -2,7 +2,7 @@
 {
 
   networking = {
-  	hostName = "rumen-server"; 
+  	hostName = "haven"; 
   	networkmanager.enable = true;  
 
     wg-quick.interfaces = {
