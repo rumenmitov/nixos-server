@@ -38,6 +38,7 @@
 			curl
 			git
 			wget
+            wireguard-tools
 
 			# Programming
 			go
@@ -53,12 +54,7 @@
 	services = {
 		openssh.enable = true;
 		logind.lidSwitch = "ignore";
-
-		zerotierone = {
-			enable = true;
-			joinNetworks = [ "56374AC9A44F65A1" ];
-		};
-	};
+    };
 
 	system.stateVersion = "24.05"; 
 }
