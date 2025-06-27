@@ -52,6 +52,9 @@
 		logind.lidSwitch = "ignore";
 	};
 
+  security.acme.defaults.email = "rumenmitov@protonmail.com";
+  security.acme.acceptTerms = true;
+
 	system.stateVersion = "25.05"; 
 }
 
