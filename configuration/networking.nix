@@ -25,8 +25,8 @@
     };
 
   	firewall.enable = true;
-  	firewall.allowedTCPPorts = [ 443 80 22 51820 ];
-  	firewall.allowedUDPPorts = [ 443 80 22 51820 ];
+  	firewall.allowedTCPPorts = [ 443 80 8080 11000 22 51820 ];
+  	firewall.allowedUDPPorts = [ 443 80 8080 11000 22 51820 ];
 	firewall.checkReversePath = false;
   };
 }

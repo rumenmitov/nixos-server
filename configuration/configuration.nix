@@ -55,6 +55,13 @@
   security.acme.defaults.email = "rumenmitov@protonmail.com";
   security.acme.acceptTerms = true;
 
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    docker = {
+      enable = true;
+    };
+  };
+
 	system.stateVersion = "25.05"; 
 }
 
