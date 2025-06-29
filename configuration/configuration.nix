@@ -47,10 +47,25 @@
 		enableSSHSupport = true;
 	};
 
-	services = {
-		openssh.enable = true;
-		logind.lidSwitch = "ignore";
-	};
+  services = {
+    openssh.enable = true;
+    logind.lidSwitch = "ignore";
+
+    ollama = {
+      enable = true;
+      host = "0.0.0.0";
+    };
+
+    paperless = {
+      enable = true;
+      passwordFile = "/etc/nixos/secrets/paperless/admin-pass";
+      address = "0.0.0.0";
+      dataDir = "/data/paperless";
+      settings = {
+        PAPERLESS_URL = "https://paperless.rumenmitov.duckdns.org";
+      };
+    };
+  };
 
   security.acme.defaults.email = "rumenmitov@protonmail.com";
   security.acme.acceptTerms = true;
