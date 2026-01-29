@@ -17,7 +17,7 @@
                 publicKey = "dxJ3jeTLXHahOOC1xCl9dduLMv0C2C+Az6KTNfqGzwo=";
                 allowedIPs = [ "0.0.0.0/0" ];
 
-                endpoint = "rumen.crabdance.com:51820";
+                endpoint = "rumenmitov.duckdns.org:51820";
                 persistentKeepalive = 25;
             }
             ];

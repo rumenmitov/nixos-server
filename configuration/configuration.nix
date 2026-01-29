@@ -47,9 +47,20 @@
 		enableSSHSupport = true;
 	};
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
   services = {
-    openssh.enable = true;
-    logind.lidSwitch = "ignore";
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+        AllowUsers = [ "rumen" ];
+      };
+    };
+
+    logind.settings.Login.HandleLidSwitch = "ignore";
 
     ollama = {
       enable = true;
@@ -77,6 +88,6 @@
     };
   };
 
-	system.stateVersion = "25.05"; 
+	system.stateVersion = "25.11"; 
 }
 
