@@ -6,10 +6,22 @@
 			./hardware-configuration.nix
 			./users.nix
 			./networking.nix
-			./nextcloud.nix
 		];
 
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+	nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+
+    optimise = {
+      automatic = true;
+      dates = [ "03:45" ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
 
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
@@ -47,42 +59,19 @@
 		enableSSHSupport = true;
 	};
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.login.enableGnomeKeyring = true;
-
-  services = {
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "no";
-        AllowUsers = [ "rumen" ];
-      };
-    };
-
-    logind.settings.Login.HandleLidSwitch = "ignore";
-
-    ollama = {
-      enable = true;
-      host = "0.0.0.0";
-    };
-
-    paperless = {
-      enable = true;
-      passwordFile = "/etc/nixos/secrets/paperless/admin-pass";
-      address = "0.0.0.0";
-      dataDir = "/data/paperless";
-      settings = {
-        PAPERLESS_URL = "https://paperless.rumenmitov.duckdns.org";
-      };
-    };
+  security = {
+    pam.services.login.enableGnomeKeyring = true;
   };
 
-  security.acme.defaults.email = "rumenmitov@protonmail.com";
-  security.acme.acceptTerms = true;
+  services = {
+    gnome.gnome-keyring.enable = true;
 
-  virtualisation.containers.enable = true;
+    logind.settings.Login.HandleLidSwitch = "ignore";
+  };
+
   virtualisation = {
+    containers.enable = true;
+
     docker = {
       enable = true;
     };

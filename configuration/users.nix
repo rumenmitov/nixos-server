@@ -1,20 +1,24 @@
 { pkgs, ... }:
 {
 
-  users.users.rumen = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; 
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      lsd
-      bat
-      ripgrep
-      tldr
-      tree
-      tmux
-      stow
-      zoxide
-    ];
+  users.users = {
+    rumen = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; 
+      shell = pkgs.zsh;
+      packages = with pkgs; [
+        lsd
+          bat
+          ripgrep
+          tldr
+          tree
+          tmux
+          stow
+          zoxide
+      ];
+    };
+
+    prosody.extraGroups = [ "nginx" ];
   };
 
   users.motd = ''
