@@ -45,7 +45,6 @@
 			curl
 			git
 			wget
-			wireguard-tools
 			neovim
 
 			# Programming
