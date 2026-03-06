@@ -30,13 +30,20 @@
 
 	time.timeZone = "Europe/Luxembourg";
 
-	programs.zsh = {
-		enable = true;
-		autosuggestions = {
-			enable = true;
-			strategy = [ "completion" "history" ];
-		};
-	};
+	programs = {
+    zsh = {
+      enable = true;
+      autosuggestions = {
+        enable = true;
+        strategy = [ "completion" "history" ];
+      };
+    };
+
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
 
 
 	environment.systemPackages = with pkgs; [
@@ -53,18 +60,7 @@
       cargo
 	];
 
-	programs.gnupg.agent = {
-		enable = true;
-		enableSSHSupport = true;
-	};
-
-  security = {
-    pam.services.login.enableGnomeKeyring = true;
-  };
-
   services = {
-    gnome.gnome-keyring.enable = true;
-
     logind.settings.Login.HandleLidSwitch = "ignore";
   };
 
