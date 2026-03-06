@@ -89,6 +89,7 @@
         domain = "upload.rumenmitov.duckdns.org";
       };
 
+      allowRegistration = true;
 
       extraModules = [ "admin_shell" ];
 
