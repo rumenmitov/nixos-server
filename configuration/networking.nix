@@ -19,7 +19,8 @@
 
       settings.Peers = [
         "tls://srl.newsdeef.eu:59999" 
-          "quic://[2a0b:4142:e9e::2]:65535" ];
+        "quic://31.57.241.104:65535"
+          "quic://94.159.111.184:65535" ];
     };
 
     openssh = {
