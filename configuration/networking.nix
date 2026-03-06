@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   security.acme = {
     defaults.email = "rumenmitov@disroot.org";
@@ -18,9 +18,10 @@
       persistentKeys = true;
 
       settings.Peers = [
-        "tls://srl.newsdeef.eu:59999" 
+        "tls://srl.newsdeef.eu:59999"
         "quic://31.57.241.104:65535"
-          "quic://94.159.111.184:65535" ];
+        "quic://94.159.111.184:65535"
+      ];
     };
 
     openssh = {
@@ -44,7 +45,7 @@
 
           locations."/" = {
             proxyPass = "http://127.0.0.1:11000";
-            proxyWebsockets = true; 
+            proxyWebsockets = true;
           };
         };
 
@@ -96,17 +97,35 @@
 
       extraConfig = ''
         http_file_share_expire_after = 60
-        '';
+      '';
     };
   };
 
   networking = {
-    hostName = "haven"; 
-    networkmanager.enable = true;  
+    hostName = "haven";
+    networkmanager.enable = true;
 
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ 443 80 8080 11000 22 28981 5222 5269 5280 5281];
-    firewall.allowedUDPPorts = [ 443 80 8080 11000 22 28981 ];
+    firewall.allowedTCPPorts = [
+      443
+      80
+      8080
+      11000
+      22
+      28981
+      5222
+      5269
+      5280
+      5281
+    ];
+    firewall.allowedUDPPorts = [
+      443
+      80
+      8080
+      11000
+      22
+      28981
+    ];
     firewall.checkReversePath = false;
   };
 }

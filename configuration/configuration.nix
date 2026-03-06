@@ -1,15 +1,16 @@
-{ config, lib, pkgs, ... }:
-
+{ pkgs, ... }:
 {
-	imports =
-		[ 
-			./hardware-configuration.nix
-			./users.nix
-			./networking.nix
-		];
+  imports = [
+    ./hardware-configuration.nix
+    ./users.nix
+    ./networking.nix
+  ];
 
-	nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     optimise = {
       automatic = true;
@@ -23,19 +24,21 @@
     };
   };
 
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
-	boot.loader.grub.device = "nodev";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.device = "nodev";
 
+  time.timeZone = "Europe/Luxembourg";
 
-	time.timeZone = "Europe/Luxembourg";
-
-	programs = {
+  programs = {
     zsh = {
       enable = true;
       autosuggestions = {
         enable = true;
-        strategy = [ "completion" "history" ];
+        strategy = [
+          "completion"
+          "history"
+        ];
       };
     };
 
@@ -45,20 +48,21 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    man-pages
+    man-db
+    curl
+    git
+    wget
+    neovim
 
-	environment.systemPackages = with pkgs; [
-			man-pages
-			man-db
-			curl
-			git
-			wget
-			neovim
-
-			# Programming
-			go
-			rustup
-      cargo
-	];
+    # Programming
+    go
+    rustup
+    cargo
+    nixd
+    nixfmt-tree
+  ];
 
   services = {
     logind.settings.Login.HandleLidSwitch = "ignore";
@@ -72,6 +76,5 @@
     };
   };
 
-	system.stateVersion = "25.11"; 
+  system.stateVersion = "25.11";
 }
-
