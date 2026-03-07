@@ -93,10 +93,13 @@
 
       allowRegistration = true;
 
-      extraModules = [ "admin_shell" ];
+      extraModules = [
+        "admin_shell"
+      ];
 
       extraConfig = ''
-        http_file_share_expire_after = 60
+        default_storage = "sql"
+        http_file_share_expires_after = 60 * 60 * 24 * 7
       '';
     };
   };
