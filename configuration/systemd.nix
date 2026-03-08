@@ -20,9 +20,9 @@
       };
 
       script = ''
-      ${pkgs.findutils}/bin/find                                              \
-        /var/lib/prosody/upload%2erumenmitov%2educkdns%2eorg/http_file_share  \
-        -type f -mtime +7 -exec ${pkgs.coreutils}/bin/rm -f {} \;
+        ${pkgs.findutils}/bin/find                                              \
+          /var/lib/prosody/upload%2erumenmitov%2educkdns%2eorg/http_file_share  \
+          -type f -mtime +7 -exec ${pkgs.coreutils}/bin/rm -f {} \;
       '';
     };
   };
