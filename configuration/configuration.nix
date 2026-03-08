@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./users.nix
     ./networking.nix
+    ./systemd.nix
   ];
 
   nix = {
@@ -49,6 +50,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    findutils
     man-pages
     man-db
     curl
