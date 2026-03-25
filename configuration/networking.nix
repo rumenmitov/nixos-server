@@ -38,6 +38,13 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
 
+      appendHttpConfig = ''
+        types {
+          text/javascript mjs;
+          application/json map;
+        }
+      '';
+
       virtualHosts = {
         "nc.rumenmitov.duckdns.org" = {
           forceSSL = true;

@@ -75,6 +75,13 @@
 
     docker = {
       enable = true;
+      daemon.settings = {
+        "default-network-opts" = {
+          bridge = {
+            "com.docker.network.enable_ipv6" = "true";
+          };
+        };
+      };
     };
   };
 
